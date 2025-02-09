@@ -1,3 +1,5 @@
+#define __PORT_sm83
+
 #include <gb/gb.h>
 #include <gb/cgb.h>
 #include <rand.h>
@@ -88,6 +90,7 @@ void main() {
     set_bkg_data( 0, NUMBER_OF_TILES, Tiles );
     fill_bkg_rect( 0, 0, BW, BH, TILE_STARFIELD );
 
+    //set_bkg_palette(1,)
     set_tile_xy(1,2,3);
 
 	while (1) {

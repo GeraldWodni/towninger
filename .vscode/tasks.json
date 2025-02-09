@@ -4,7 +4,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "c:/users/fiz/source/bgbw64/BGB64.exe",
+            "command": "${workspaceFolder}/../../bgbw64/BGB64.exe",
             "args": [
                 "${workspaceFolder}/Towninger.gb"
             ],
