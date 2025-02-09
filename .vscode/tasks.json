@@ -27,6 +27,21 @@
                 "kind": "build",
                 "isDefault": false
             },
+            "problemMatcher": {
+                "owner": "custom",
+                "applyTo": "allDocuments",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*)\\:(\\d+)\\:\\s(warning|error)\\s\\d+\\:(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "severity": 3,
+                    "message": 4
+                }
+            },
             "detail": "Generated task to run make"
         },
         {

@@ -8,7 +8,9 @@ TARGET = $(PROJECT_NAME).gb
 SRCS = main.c graphics.c
 
 all:
+	@echo "Compiling..."
 	$(CC) $(CFLAGS) -o $(TARGET) $(SRCS)
+	@echo "Build completed"
 
 clean:
 	del $(TARGET)

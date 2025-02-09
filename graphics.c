@@ -30,9 +30,7 @@ void setTiles( uint8_t x, uint8_t y, uint8_t startTile, uint8_t w ) {
 }
 
 void setAllTiles( uint8_t tile ) {
-    for( uint8_t y = 0; y < TH; y++ )
-        for( uint8_t x = 0; x < BW; x++ )
-            setTile( x, y, tile );
+    fill_bkg_rect( 0, 0, BW, TH, tile );
 }
 
 void drawText( uint8_t x, uint8_t y, const unsigned char *text ) {
