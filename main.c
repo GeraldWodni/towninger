@@ -11,6 +11,7 @@
 void main(void) {
     SHOW_BKG;
     SHOW_SPRITES;
+    SHOW_WIN;
     DISPLAY_ON;
 
     uint8_t my_tile = TILE_STARFIELD;
@@ -39,6 +40,19 @@ void main(void) {
     set_tile_xy(1,2,TILE_PLAYER);
     set_tile_xy_color(1,2,TCOL(TILE_PLAYER));
 
+    set_tile_xy_with_color(1,4,TILE_PLAYER);
+
+    /* window */
+    set_win_data(0, NUMBER_OF_TILES, Tiles);
+    fill_win( TILE_PLAYER );
+
+    USE_COLOR_RAM;
+    fill_win( TCOL(TILE_PLAYER) );
+    move_win(7,PH-WIN_PH);
+    USE_DATA_RAM;
+
+    
+    /* start screen wait */
     waitpad(J_START);
     waitpadup();
 

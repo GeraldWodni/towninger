@@ -6,6 +6,9 @@
 #include "media/tiles.h"
 
 // 160x144 px = 20x18 tiles
+#define WIN_TH 1    /* window size */
+#define WIN_PH (WIN_TH*8)
+
 #define PW 160  /* pixel dimensions */
 #define PH 144
 #define TW 20   /* tile dimensions */
@@ -19,7 +22,7 @@
 #define TPW (BW*8) /* Tile pixel width */
 #define TPH (BH*8)
 #define SCROLL_W (TPW-PW) /* scrolling */
-#define SCROLL_H (TPH-PH) 
+#define SCROLL_H (TPH-PH + WIN_PH) 
 #define SCROLL_MW (SCROLL_W-1) /* maximum scrolling */
 #define SCROLL_MH (SCROLL_H-1)
 #define SCROLL_X (SCROLL_MW/2)
@@ -61,11 +64,13 @@
 #define USE_COLOR_RAM VBK_REG=1
 #define USE_DATA_RAM VBK_REG=0
 
-#define set_tile_xy_color(x,y,tile) USE_COLOR_RAM; set_tile_xy(x, y, tile); USE_DATA_RAM
+#define set_tile_xy_color(x,y,color) USE_COLOR_RAM; set_tile_xy(x, y, color); USE_DATA_RAM
+#define set_tile_xy_with_color(x,y,tile) set_tile_xy(x,y,tile); set_tile_xy_color(x,y,TCOL(tile))
 
 void setTile( uint8_t x, uint8_t y, uint8_t tile );
 void setTiles( uint8_t x, uint8_t y, uint8_t startTile, uint8_t w );
 void fill_bkg( uint8_t tile );
+void fill_win( uint8_t tile );
 
 void drawText( uint8_t x, uint8_t y, const unsigned char *text );
 

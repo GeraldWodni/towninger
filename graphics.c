@@ -33,6 +33,10 @@ void fill_bkg( uint8_t tile ) {
     fill_bkg_rect( 0, 0, BW, BH, tile );
 }
 
+void fill_win( uint8_t tile ) {
+    fill_win_rect( 0, 0, BW, BH, tile );
+}
+
 void drawText( uint8_t x, uint8_t y, const unsigned char *text ) {
     for (; *text != '\0'; text++){
         unsigned char c = *text;
