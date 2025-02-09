@@ -147,10 +147,10 @@
 #define TilesCGB45 0
 #define TilesCGB46 0
 #define TilesCGB47 0
-#define TilesCGB48 0
-#define TilesCGB49 0
-#define TilesCGB50 0
-#define TilesCGB51 0
+#define TilesCGB48 3
+#define TilesCGB49 3
+#define TilesCGB50 2
+#define TilesCGB51 2
 #define TilesCGB52 0
 #define TilesCGB53 0
 #define TilesCGB54 0
@@ -159,10 +159,10 @@
 #define TilesCGB57 0
 #define TilesCGB58 0
 #define TilesCGB59 0
-#define TilesCGB60 0
-#define TilesCGB61 0
-#define TilesCGB62 0
-#define TilesCGB63 0
+#define TilesCGB60 6
+#define TilesCGB61 6
+#define TilesCGB62 6
+#define TilesCGB63 6
 #define TilesCGB64 0
 /* Start of tile array. */
 extern unsigned char Tiles[];
