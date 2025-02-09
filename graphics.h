@@ -28,7 +28,7 @@
 // Tile settings
 #define NUMBER_OF_TILES 64
 #define TILE_EMPTY 0
-#define TILE_PLAYER 1
+#define TILE_PLAYER 56
 #define TILE_ROCKET 2
 #define TILE_ENEMY 3
 #define TILE_RAY 4
@@ -60,6 +60,8 @@
 // convenience macros
 #define USE_COLOR_RAM VBK_REG=1
 #define USE_DATA_RAM VBK_REG=0
+
+#define set_tile_xy_color(x,y,tile) USE_COLOR_RAM; set_tile_xy(x, y, tile); USE_DATA_RAM
 
 void setTile( uint8_t x, uint8_t y, uint8_t tile );
 void setTiles( uint8_t x, uint8_t y, uint8_t startTile, uint8_t w );

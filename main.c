@@ -20,6 +20,9 @@ void main(void) {
     uint8_t bkg_x = SCROLL_X;
     uint8_t bkg_y = SCROLL_Y;
 
+    uint8_t player_x = 3;
+    uint8_t player_y = 3;
+
     /* background */
     set_bkg_palette( 0, 8, spritePalette );
     set_bkg_data( 0, NUMBER_OF_TILES, Tiles );
@@ -33,7 +36,8 @@ void main(void) {
     drawText( 6, 5, "TOWNINGER" );
     drawText( 5, 7, "PRESS START" );
 
-    set_tile_xy(1,2,3);
+    set_tile_xy(1,2,TILE_PLAYER);
+    set_tile_xy_color(1,2,TCOL(TILE_PLAYER));
 
     waitpad(J_START);
     waitpadup();
