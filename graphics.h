@@ -39,7 +39,7 @@
 
 void setTile( uint8_t x, uint8_t y, uint8_t tile );
 void setTiles( uint8_t x, uint8_t y, uint8_t startTile, uint8_t w );
-void setAllTiles( uint8_t tile );
+void fill_bkg( uint8_t tile );
 
 void drawText( uint8_t x, uint8_t y, const unsigned char *text );
 

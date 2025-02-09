@@ -52,7 +52,7 @@ void main(void) {
                 case J_UP:
                     if( my_color < 8-1 ) {
                         VBK_REG=1;
-                        setAllTiles(++my_color);
+                        fill_bkg(++my_color);
                         VBK_REG=0;
                     }
                     lock_button = 1;
@@ -60,7 +60,7 @@ void main(void) {
                 case J_DOWN:
                     if( my_color > 0 ) {
                         VBK_REG=1;
-                        setAllTiles(--my_color);
+                        fill_bkg(--my_color);
                         VBK_REG=0;
                     }
                     lock_button = 1;
