@@ -29,6 +29,11 @@
 #define BW 32
 #define BH 32
 
+// TileColor: https://stackoverflow.com/a/1489985
+#define PASTER( X, Y ) X ## Y
+#define EVALUATOR( X, Y ) PASTER( X, Y )
+#define TCOL( X ) EVALUATOR( TilesCGB, X )
+
 #define TARGET_BKG 0
 #define TARGET_WIN 1
 
@@ -85,13 +90,17 @@ void main() {
     SHOW_BKG;
     SHOW_SPRITES;
     DISPLAY_ON;
-	
+
+    /* background */
     set_bkg_palette( 0, 8, spritePalette );
     set_bkg_data( 0, NUMBER_OF_TILES, Tiles );
     fill_bkg_rect( 0, 0, BW, BH, TILE_STARFIELD );
 
-    //set_bkg_palette(1,)
     set_tile_xy(1,2,3);
+
+    move_bkg( 0, 0 );
+    drawText( 6, 5, "TOWNINGER" );
+    drawText( 5, 7, "PRESS START" );
 
 	while (1) {
 		if (joypad() && J_A)
