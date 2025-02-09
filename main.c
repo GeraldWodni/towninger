@@ -8,7 +8,7 @@
 
 #include "graphics.h"
 
-void main() {
+void main(void) {
     SHOW_BKG;
     SHOW_SPRITES;
     DISPLAY_ON;
