@@ -21,7 +21,6 @@ void main(void) {
     set_bkg_palette( 0, 8, spritePalette );
     set_bkg_data( 0, NUMBER_OF_TILES, Tiles );
     fill_bkg_rect( 0, 0, BW, BH, my_tile );
-    //set_bkg_
 
     move_bkg( 0, 0 );
     drawText( 6, 5, "TOWNINGER" );
@@ -32,6 +31,11 @@ void main(void) {
     waitpad(J_START);
     waitpadup();
 
+    set_tile_xy(1,2,48);
+    set_tile_xy(1,3,49);
+    set_tile_xy(2,2,50);
+    set_tile_xy(2,3,51);
+
 	while (1) {
 		UINT8 buttons = joypad();
         if( buttons == 0 && lock_button )
@@ -41,12 +45,20 @@ void main(void) {
             switch( buttons ) {
                 case J_LEFT:
                     if( my_tile > 0 )
-                        fill_bkg_rect( 0, 0, BW, BH, --my_tile );
+                        my_tile--;
+                    else
+                        my_tile = NUMBER_OF_TILES;
+
+                    fill_bkg_rect( 0, 0, BW, BH, my_tile );
                     lock_button = 1;
                 break;
                 case J_RIGHT:
                     if( my_tile < NUMBER_OF_TILES-1 )
-                        fill_bkg_rect( 0, 0, BW, BH, ++my_tile );
+                        my_tile++;
+                    else
+                        my_tile = 0;
+
+                    fill_bkg_rect( 0, 0, BW, BH, my_tile );
                     lock_button = 1;
                 break;
                 case J_UP:

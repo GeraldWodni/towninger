@@ -14,7 +14,7 @@
 #define BH 32
 
 // Tile settings
-#define NUMBER_OF_TILES 47
+#define NUMBER_OF_TILES 64
 #define TILE_EMPTY 0
 #define TILE_PLAYER 1
 #define TILE_ROCKET 2

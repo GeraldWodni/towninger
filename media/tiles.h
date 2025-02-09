@@ -10,7 +10,7 @@
   Compression          : None.
   Counter              : None.
   Tile size            : 8 x 8
-  Tiles                : 0 to 46
+  Tiles                : 0 to 64
 
   Palette colors       : Included.
   SGB Palette          : None.
@@ -102,12 +102,12 @@
 #define TilesCGB0 0
 #define TilesCGB1 4
 #define TilesCGB2 1
-#define TilesCGB3 2
+#define TilesCGB3 4
 #define TilesCGB4 0
 #define TilesCGB5 3
 #define TilesCGB6 0
 #define TilesCGB7 0
-#define TilesCGB8 1
+#define TilesCGB8 0
 #define TilesCGB9 0
 #define TilesCGB10 0
 #define TilesCGB11 0
@@ -146,6 +146,24 @@
 #define TilesCGB44 0
 #define TilesCGB45 0
 #define TilesCGB46 0
+#define TilesCGB47 0
+#define TilesCGB48 0
+#define TilesCGB49 0
+#define TilesCGB50 0
+#define TilesCGB51 0
+#define TilesCGB52 0
+#define TilesCGB53 0
+#define TilesCGB54 0
+#define TilesCGB55 0
+#define TilesCGB56 0
+#define TilesCGB57 0
+#define TilesCGB58 0
+#define TilesCGB59 0
+#define TilesCGB60 0
+#define TilesCGB61 0
+#define TilesCGB62 0
+#define TilesCGB63 0
+#define TilesCGB64 0
 /* Start of tile array. */
 extern unsigned char Tiles[];
 
