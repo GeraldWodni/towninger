@@ -19,6 +19,30 @@
             ]
         },
         {
+            "label": "setup_win",
+            "type": "shell",
+            "command": "${workspaceFolder}/setup_win.bat",
+            "args": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [],
+            "detail": "Downloads all dependencies for Windows"
+        },
+        {
+            "label": "setup_linux",
+            "type": "shell",
+            "command": "${workspaceFolder}/setup_linux.sh",
+            "args": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [],
+            "detail": "Downloads all dependencies for Linux"
+        },
+        {
             "label": "buildgb",
             "type": "shell",
             "command": "make",
