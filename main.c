@@ -87,6 +87,8 @@ void main(void) {
     waitpad(J_START);
     waitpadup();
 
+    set_tile_map( 0, 0, BW, BH, TileMap );
+
     set_tile_xy(CX-1,CY-1,70);
     set_tile_xy(CX-1,CY  ,71);
     set_tile_xy(CX  ,CY-1,72);
