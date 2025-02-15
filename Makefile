@@ -4,6 +4,8 @@ CC = $(abspath $(GBDK_DIR))/bin/lcc
 INCLUDE_DIR = $(abspath $(GBDK_DIR))/include
 CFLAGS = -Wa-l -Wl-m -Wl-j -Wm-yc
 TARGET = $(PROJECT_NAME).gb
+EMULATOR_RUN = mgba-qt
+
 
 # Source files for your project (you can add more .c files here)
 SRCS = main.c graphics.c
@@ -16,6 +18,11 @@ build:
 	@echo "Compiling..."
 	$(CC) $(CFLAGS) -o $(TARGET) $(SRCS)
 	@echo "Build completed"
+
+run: build
+	@echo "Running..."
+	$(EMULATOR_RUN) $(TARGET)
+	@echo "Done..."
 
 # Target to clean up build files
 clean:
