@@ -55,6 +55,7 @@
 /* Tile animation colors */
 #define TILE_WATER_HIGHLIGHT1 RGB( 0, 16, 28)
 #define TILE_WATER_HIGHLIGHT2 RGB( 0, 25, 31)
+#define TILE_MOB_HIGHLIGHT RGB( 31, 7, 16 )
 
 #define TILE_DEFAULT TILE_WATER
 
