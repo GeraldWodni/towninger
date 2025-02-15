@@ -120,7 +120,7 @@ void main(void) {
     USE_DATA_RAM;
 
 	while(1) {
-		UINT8 buttons = joypad();
+		uint8_t buttons = joypad();
         if( buttons == 0 && lock_button )
             lock_button = 0;
 
