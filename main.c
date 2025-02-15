@@ -88,6 +88,9 @@ void main(void) {
     waitpadup();
 
     set_tile_map( 0, 0, BW, BH, TileMap );
+    USE_COLOR_RAM;
+    set_tile_map( 0, 0, BW, BH, TileMapPalettes );
+    USE_DATA_RAM;
 
     set_tile_xy(CX-1,CY-1,70);
     set_tile_xy(CX-1,CY  ,71);
