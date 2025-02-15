@@ -12,6 +12,7 @@ uint8_t animation_counter = 0;
 
 uint8_t animation_water = 0;
 uint8_t animation_mobs = 0;
+uint8_t animation_mob_dir = 0;
 void animations( void ){
     if( C_ANIM( C_4Hz, animation_counter ) ) {
         switch( animation_water ) {
@@ -35,6 +36,16 @@ void animations( void ){
             set_bkg_palette_entry(PAL_MOB, 2, TILE_MOB_HIGHLIGHT);
         else
             set_bkg_palette_entry(PAL_MOB, 2, TPALCOL( PAL_MOB, 2 ));
+    }
+    if( C_ANIM( C_2Hz, animation_counter ) ) {
+        if( animation_mob_dir++ & 0x01 ) {
+            set_tile_xy_color(CX-3, CY-4, PAL_MOB);
+            set_tile_xy_color(CX-3, CY+2, PAL_MOB);
+        }
+        else {
+            set_tile_xy_color(CX-3, CY-4, PAL_MOB | OAMF_XFLIP);
+            set_tile_xy_color(CX-3, CY+2, PAL_MOB | OAMF_XFLIP);
+        }
     }
     animation_counter++;
 }
