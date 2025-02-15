@@ -3,7 +3,9 @@
 
 #include <gb/gb.h>
 
+/* adopt to tileset in use */
 #include "media/tiles_medieval.h"
+#define NUMBER_OF_TILES 90
 
 // 160x144 px = 20x18 tiles
 #define WIN_TH 1    /* window size */
@@ -29,7 +31,6 @@
 #define SCROLL_Y (SCROLL_MH/2)
 
 // Tile settings
-#define NUMBER_OF_TILES 90
 #define TILE_EMPTY 9
 #define TILE_PLAYER 50
 #define TILE_FIREBALL 51
@@ -42,18 +43,44 @@
 #define TILE_CASTLE_LEFT 70
 #define TILE_CASTLE_RIGHT 72
 
+#define TILE_WATER 1
 #define TILE_WATER_TOP_LEFT 2
 #define TILE_WATER_BOTTOM_LEFT 3
 #define TILE_WATER_TOP_RIGHT 4
 #define TILE_WATER_BOTTOM_RIGHT 5
+
+/* Tile animation colors */
+#define TILE_WATER_HIGHLIGHT1 RGB( 0, 16, 28)
+#define TILE_WATER_HIGHLIGHT2 RGB( 0, 25, 31)
+
+#define TILE_DEFAULT TILE_WATER
 
 // TileColor: https://stackoverflow.com/a/1489985
 #define PASTER( X, Y ) X ## Y
 #define EVALUATOR( X, Y ) PASTER( X, Y )
 #define TCOL( X ) EVALUATOR( TilesCGB, X )
 
+#define PASTER4( W, X, Y, Z ) W ## X ## Y ## Z
+#define EVALUATOR4( W, X, Y, Z ) PASTER4( W, X, Y, Z )
+#define TPALCOL( X, I ) EVALUATOR4( TilesCGBPal, X, c, I ) 
+
+/* palettes */
+#define PAL_WATER TCOL(TILE_WATER_TOP_LEFT)
+
 #define TARGET_BKG 0
 #define TARGET_WIN 1
+
+/* animations */
+#define C_MASK( N ) ( (1<<N) | ((1<<N)-1) )
+#define C_60Hz C_MASK( 0 )
+#define C_30Hz C_MASK( 1 )
+#define C_15Hz C_MASK( 2 )
+#define C_7Hz  C_MASK( 3 )
+#define C_4Hz  C_MASK( 4 )
+#define C_2Hz  C_MASK( 5 )
+#define C_1Hz  C_MASK( 6 )
+#define C_05Hz C_MASK( 7 )
+#define C_ANIM( C, N ) (C & N) == C
 
 // convenience macros
 #define USE_COLOR_RAM VBK_REG=1

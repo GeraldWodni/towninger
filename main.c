@@ -8,13 +8,37 @@
 
 #include "graphics.h"
 
+uint8_t animation_counter = 0;
+
+uint8_t animation_water = 0;
+void animations( void ){
+    if( C_ANIM( C_4Hz, animation_counter ) ) {
+        switch( animation_water ) {
+            case 0:
+                set_bkg_palette_entry( PAL_WATER, 1, TILE_WATER_HIGHLIGHT1 );
+            break;
+            case 1:
+                set_bkg_palette_entry( PAL_WATER, 1, TPALCOL( PAL_WATER, 1 ) );
+            break;
+            case 2:
+                set_bkg_palette_entry( PAL_WATER, 2, TILE_WATER_HIGHLIGHT2 );
+            break;
+            case 3:
+                set_bkg_palette_entry( PAL_WATER, 2, TPALCOL( PAL_WATER, 2 ) );
+            break;
+        }
+        animation_water = (++animation_water) & 0b11;
+    }
+    animation_counter++;
+}
+
 void main(void) {
     SHOW_BKG;
     SHOW_SPRITES;
     SHOW_WIN;
     DISPLAY_ON;
 
-    uint8_t my_tile = TILE_GRASS;
+    uint8_t my_tile = TILE_DEFAULT;
     uint8_t my_color = 0;
     uint8_t lock_button = 0;
 
@@ -30,7 +54,7 @@ void main(void) {
     fill_bkg_rect( 0, 0, BW, BH, my_tile );
 
     USE_COLOR_RAM;
-    fill_bkg(0);
+    fill_bkg( TCOL(TILE_DEFAULT) );
     USE_DATA_RAM;
 
     move_bkg( 0, 0 );
@@ -86,7 +110,7 @@ void main(void) {
     set_tile_xy(CX-3, CY+4, TCOL(64));
     USE_DATA_RAM;
 
-	while (1) {
+	while(1) {
 		UINT8 buttons = joypad();
         if( buttons == 0 && lock_button )
             lock_button = 0;
@@ -115,6 +139,7 @@ void main(void) {
         }
 
         wait_vbl_done();
+        animations();
         move_bkg(bkg_x, bkg_y);
 	}
 
