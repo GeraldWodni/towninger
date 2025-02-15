@@ -1,6 +1,7 @@
 #include "graphics.h"
 
 #include "media/tiles_medieval.c"
+#include "media/tilemap.c"
 
 uint8_t tileTarget = TARGET_BKG;
 

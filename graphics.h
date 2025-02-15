@@ -5,6 +5,7 @@
 
 /* adopt to tileset in use */
 #include "media/tiles_medieval.h"
+#include "media/tilemap.h"
 #define NUMBER_OF_TILES 90
 
 // 160x144 px = 20x18 tiles
