@@ -85,11 +85,11 @@ void main(void) {
     set_tile_xy(CX  ,CY-1,72);
     set_tile_xy(CX  ,CY  ,73);
 
-    set_tile_xy(CX-3, CY-4, 60);
-    set_tile_xy(CX-3, CY-2, 61);
-    set_tile_xy(CX-3, CY, 62);
-    set_tile_xy(CX-3, CY+2, 63);
-    set_tile_xy(CX-3, CY+4, 64);
+    set_tile_xy(CX-3, CY-4, TILE_MOB_0+0);
+    set_tile_xy(CX-3, CY-2, TILE_MOB_0+1);
+    set_tile_xy(CX-3, CY,   TILE_MOB_0+2);
+    set_tile_xy(CX-3, CY+2, TILE_MOB_0+3);
+    set_tile_xy(CX-3, CY+4, TILE_MOB_0+4);
 
     set_tile_xy( 0, 0,TILE_WATER_TOP_LEFT    );
     set_tile_xy( 0,MH,TILE_WATER_BOTTOM_LEFT );
@@ -103,11 +103,11 @@ void main(void) {
     set_tile_xy( 0,MH,TCOL(TILE_WATER_BOTTOM_LEFT ));
     set_tile_xy(MW, 0,TCOL(TILE_WATER_TOP_RIGHT   ));
     set_tile_xy(MW,MH,TCOL(TILE_WATER_BOTTOM_RIGHT));
-    set_tile_xy(CX-3, CY-4, TCOL(60));
-    set_tile_xy(CX-3, CY-2, TCOL(61));
-    set_tile_xy(CX-3, CY, TCOL(62));
-    set_tile_xy(CX-3, CY+2, TCOL(63));
-    set_tile_xy(CX-3, CY+4, TCOL(64));
+    set_tile_xy(CX-3, CY-4, PAL_MOB);
+    set_tile_xy(CX-3, CY-2, PAL_MOB);
+    set_tile_xy(CX-3, CY,   PAL_MOB);
+    set_tile_xy(CX-3, CY+2, PAL_MOB);
+    set_tile_xy(CX-3, CY+4, PAL_MOB);
     USE_DATA_RAM;
 
 	while(1) {

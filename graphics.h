@@ -49,6 +49,9 @@
 #define TILE_WATER_TOP_RIGHT 4
 #define TILE_WATER_BOTTOM_RIGHT 5
 
+#define TILE_MOB_0 60
+#define TILE_MOBS 5
+
 /* Tile animation colors */
 #define TILE_WATER_HIGHLIGHT1 RGB( 0, 16, 28)
 #define TILE_WATER_HIGHLIGHT2 RGB( 0, 25, 31)
@@ -66,6 +69,7 @@
 
 /* palettes */
 #define PAL_WATER TCOL(TILE_WATER_TOP_LEFT)
+#define PAL_MOB   TCOL(TILE_MOB_0)
 
 #define TARGET_BKG 0
 #define TARGET_WIN 1
