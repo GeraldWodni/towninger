@@ -3,11 +3,12 @@
         {
             "name": "Gameboy",
             "includePath": [
-                "${workspaceFolder}/../../gbdk/include"
+                "${workspaceFolder}/**/gbdk/include",
+                "${workspaceFolder}/gbdk/include"
             ],
             "intelliSenseMode": "windows-msvc-x64",
             "compilerPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\VC\\Tools\\MSVC\\14.16.27023\\bin\\Hostx64\\x64\\cl.exe",
-            "cStandard": "c17",
+            "cStandard": "c11",
             "cppStandard": "c++17"
         }
     ],

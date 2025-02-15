@@ -14,7 +14,7 @@ void main(void) {
     SHOW_WIN;
     DISPLAY_ON;
 
-    uint8_t my_tile = TILE_STARFIELD;
+    uint8_t my_tile = TILE_GRASS;
     uint8_t my_color = 0;
     uint8_t lock_button = 0;
 
@@ -56,23 +56,23 @@ void main(void) {
     waitpad(J_START);
     waitpadup();
 
-    set_tile_xy(CX-1,CY-1,48);
-    set_tile_xy(CX-1,CY  ,49);
-    set_tile_xy(CX  ,CY-1,50);
-    set_tile_xy(CX  ,CY  ,51);
+    set_tile_xy(CX-1,CY-1,70);
+    set_tile_xy(CX-1,CY  ,71);
+    set_tile_xy(CX  ,CY-1,72);
+    set_tile_xy(CX  ,CY  ,73);
 
-    set_tile_xy( 0, 0,TILE_TOP_LEFT    );
-    set_tile_xy( 0,MH,TILE_BOTTOM_LEFT );
-    set_tile_xy(MW, 0,TILE_TOP_RIGHT   );
-    set_tile_xy(MW,MH,TILE_BOTTOM_RIGHT);
+    set_tile_xy( 0, 0,TILE_WATER_TOP_LEFT    );
+    set_tile_xy( 0,MH,TILE_WATER_BOTTOM_LEFT );
+    set_tile_xy(MW, 0,TILE_WATER_TOP_RIGHT   );
+    set_tile_xy(MW,MH,TILE_WATER_BOTTOM_RIGHT);
 
     USE_COLOR_RAM;
-    fill_bkg_rect(CX-1,CY-1,1,2, TCOL( TILE_FACE_LEFT ) );
-    fill_bkg_rect(CX  ,CY-1,1,2, TCOL( TILE_FACE_RIGHT ) );
-    set_tile_xy( 0, 0,TCOL(TILE_TOP_LEFT    ));
-    set_tile_xy( 0,MH,TCOL(TILE_BOTTOM_LEFT ));
-    set_tile_xy(MW, 0,TCOL(TILE_TOP_RIGHT   ));
-    set_tile_xy(MW,MH,TCOL(TILE_BOTTOM_RIGHT));
+    fill_bkg_rect(CX-1,CY-1,1,2, TCOL( TILE_CASTLE_LEFT ) );
+    fill_bkg_rect(CX  ,CY-1,1,2, TCOL( TILE_CASTLE_RIGHT ) );
+    set_tile_xy( 0, 0,TCOL(TILE_WATER_TOP_LEFT    ));
+    set_tile_xy( 0,MH,TCOL(TILE_WATER_BOTTOM_LEFT ));
+    set_tile_xy(MW, 0,TCOL(TILE_WATER_TOP_RIGHT   ));
+    set_tile_xy(MW,MH,TCOL(TILE_WATER_BOTTOM_RIGHT));
     USE_DATA_RAM;
 
 	while (1) {

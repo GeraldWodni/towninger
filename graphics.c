@@ -1,6 +1,6 @@
 #include "graphics.h"
 
-#include "media/tiles.c"
+#include "media/tiles_medieval.c"
 
 uint8_t tileTarget = TARGET_BKG;
 
@@ -40,15 +40,13 @@ void fill_win( uint8_t tile ) {
 void drawText( uint8_t x, uint8_t y, const unsigned char *text ) {
     for (; *text != '\0'; text++){
         unsigned char c = *text;
-        uint8_t tile = TILE_X;
+        uint8_t tile = TILE_EMPTY;
         if( c == ' ' )
-            tile = TILE_EMPTY;
+            tile = TILE_GRASS;
         else if( '0' <= c && c <= '9' )
             tile = TILE_ZERO + (c-'0');
         else if( 'A' <= c && c <= 'Z')
             tile = TILE_A + (c-'A');
-        else if( c == 'a' )
-            tile = TILE_ASTROID;
 
         setTile( x++, y, tile );
     }

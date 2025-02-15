@@ -3,7 +3,7 @@
 
 #include <gb/gb.h>
 
-#include "media/tiles.h"
+#include "media/tiles_medieval.h"
 
 // 160x144 px = 20x18 tiles
 #define WIN_TH 1    /* window size */
@@ -29,28 +29,23 @@
 #define SCROLL_Y (SCROLL_MH/2)
 
 // Tile settings
-#define NUMBER_OF_TILES 64
-#define TILE_EMPTY 0
-#define TILE_PLAYER 56
-#define TILE_ROCKET 2
-#define TILE_ENEMY 3
-#define TILE_RAY 4
-#define TILE_EXPLOSION 5
-#define TILE_GRADIENT 6
-#define TILE_STARFIELD 7
-#define TILE_ASTROID 8
-#define TILE_LIFE 9
+#define NUMBER_OF_TILES 90
+#define TILE_EMPTY 9
+#define TILE_PLAYER 50
+#define TILE_FIREBALL 51
+#define TILE_ENEMY_BRUTE 63
+#define TILE_EXPLOSION 52
+#define TILE_GRASS 0
 #define TILE_ZERO 10
 #define TILE_A 20
-#define TILE_X 46
 
-#define TILE_FACE_LEFT 48
-#define TILE_FACE_RIGHT 50
+#define TILE_CASTLE_LEFT 70
+#define TILE_CASTLE_RIGHT 72
 
-#define TILE_TOP_LEFT 60
-#define TILE_BOTTOM_LEFT 61
-#define TILE_TOP_RIGHT 62
-#define TILE_BOTTOM_RIGHT 63
+#define TILE_WATER_TOP_LEFT 2
+#define TILE_WATER_BOTTOM_LEFT 3
+#define TILE_WATER_TOP_RIGHT 4
+#define TILE_WATER_BOTTOM_RIGHT 5
 
 // TileColor: https://stackoverflow.com/a/1489985
 #define PASTER( X, Y ) X ## Y
