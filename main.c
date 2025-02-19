@@ -62,6 +62,9 @@ void main(void) {
 
     uint8_t bkg_x = SCROLL_X;
     uint8_t bkg_y = SCROLL_Y;
+    BCD bcd_bkg_x; uint2bcd( 1234, &bcd_bkg_x );
+    BCD bcd_bkg_y; uint2bcd( SCROLL_X, &bcd_bkg_y );
+    //bcd_bkg_x = 0x01020304;
 
     uint8_t player_x = 3;
     uint8_t player_y = 3;
@@ -69,6 +72,7 @@ void main(void) {
     /* background */
     set_bkg_palette( 0, 8, spritePalette );
     set_bkg_data( 0, NUMBER_OF_TILES, Tiles );
+    set_win_data( 0, NUMBER_OF_TILES, Tiles );
     fill_bkg_rect( 0, 0, BW, BH, my_tile );
 
     USE_COLOR_RAM;
@@ -76,8 +80,8 @@ void main(void) {
     USE_DATA_RAM;
 
     move_bkg( 0, 0 );
-    drawText( 6, 5, "TOWNINGER" );
-    drawText( 5, 7, "PRESS START" );
+    drawText( 6, 5, DrawBkg, "TOWNINGER" );
+    drawText( 5, 7, DrawBkg, "PRESS START" );
 
     set_tile_xy(1,2,TILE_PLAYER);
     set_tile_xy_color(1,2,TCOL(TILE_PLAYER));
@@ -88,8 +92,11 @@ void main(void) {
     set_win_data(0, NUMBER_OF_TILES, Tiles);
     fill_win( TILE_PLAYER );
 
+    drawText(0, 0, DrawWin, "BX:XXXX BY:XXXX" );
+    drawBcdRightAligned( 3, 0, 4, &bcd_bkg_x );
+
     USE_COLOR_RAM;
-    fill_win( TCOL(TILE_PLAYER) );
+    fill_win( PAL_TEXT );
     move_win(7,PH-WIN_PH);
     USE_DATA_RAM;
 
@@ -141,12 +148,16 @@ void main(void) {
         if( !lock_button ) {            
             switch( buttons ) {
                 case J_LEFT:
-                    if( bkg_x > 0 )
+                    if( bkg_x > 0 ) {
                         bkg_x--;
+                        bcd_decr_2d( bcd_bkg_x );
+                    }
                 break;
                 case J_RIGHT:
-                    if( bkg_x < SCROLL_W )
+                    if( bkg_x < SCROLL_W ) {
                         bkg_x++;
+                        bcd_incr_2d( bcd_bkg_x );
+                    }
                 break;
                 case J_UP:
                     if( bkg_y > 0 )
@@ -164,6 +175,10 @@ void main(void) {
         wait_vbl_done();
         animations();
         move_bkg(bkg_x, bkg_y);
+
+        uint2bcd( bkg_x, &bcd_bkg_y );
+        drawBcdRightAligned(  3, 0, 4, &bcd_bkg_x );
+        drawBcdRightAligned( 11, 0, 4, &bcd_bkg_y );
 	}
 
 	DISPLAY_OFF;

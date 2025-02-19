@@ -2,6 +2,7 @@
 #define GRAPHICS_H
 
 #include <gb/gb.h>
+#include "fast_bcd.h"
 
 /* adopt to tileset in use */
 #include "media/tiles_medieval.h"
@@ -72,9 +73,12 @@
 /* palettes */
 #define PAL_WATER TCOL(TILE_WATER_TOP_LEFT)
 #define PAL_MOB   TCOL(TILE_MOB_0)
+#define PAL_TEXT  TCOL(TILE_ZERO)
 
-#define TARGET_BKG 0
-#define TARGET_WIN 1
+typedef enum {
+    DrawBkg = 0,
+    DrawWin
+} drawTarget;
 
 /* animations */
 #define C_MASK( N ) ( (1<<N) | ((1<<N)-1) )
@@ -95,12 +99,11 @@
 #define set_tile_xy_color(x,y,color) USE_COLOR_RAM; set_tile_xy(x, y, color); USE_DATA_RAM
 #define set_tile_xy_with_color(x,y,tile) set_tile_xy(x,y,tile); set_tile_xy_color(x,y,TCOL(tile))
 
-void setTile( uint8_t x, uint8_t y, uint8_t tile );
-void setTiles( uint8_t x, uint8_t y, uint8_t startTile, uint8_t w );
 void fill_bkg( uint8_t tile );
 void fill_win( uint8_t tile );
 
-void drawText( uint8_t x, uint8_t y, const unsigned char *text );
+void drawBcdRightAligned( uint8_t x, uint8_t y, uint8_t w, const BCD *value );
+void drawText( uint8_t x, const uint8_t y, drawTarget target, const unsigned char *text );
 
 #define SPRITE_PALETTE_SIZE (4*8)
 

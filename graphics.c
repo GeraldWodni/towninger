@@ -3,8 +3,6 @@
 #include "media/tiles_medieval.c"
 #include "media/tilemap.c"
 
-uint8_t tileTarget = TARGET_BKG;
-
 const uint16_t spritePalette[] = {
     /* 0 3 2 1 */
     TilesCGBPal0c0, TilesCGBPal0c1, TilesCGBPal0c2, TilesCGBPal0c3,
@@ -17,19 +15,6 @@ const uint16_t spritePalette[] = {
     TilesCGBPal7c0, TilesCGBPal7c1, TilesCGBPal7c2, TilesCGBPal7c3
 };
 
-void setTile( uint8_t x, uint8_t y, uint8_t tile ) {
-    unsigned char buffer[1] = { tile };
-    if( tileTarget == TARGET_BKG )
-        set_bkg_tiles( x, y, 1, 1, buffer );
-    else
-        set_win_tiles( x, y, 1, 1, buffer );
-}
-
-void setTiles( uint8_t x, uint8_t y, uint8_t startTile, uint8_t w ) {
-    for( uint8_t i = 0; i < w; i++ )
-        setTile( x+i, y, startTile+i );
-}
-
 void fill_bkg( uint8_t tile ) {
     fill_bkg_rect( 0, 0, BW, BH, tile );
 }
@@ -38,7 +23,21 @@ void fill_win( uint8_t tile ) {
     fill_win_rect( 0, 0, BW, BH, tile );
 }
 
-void drawText( uint8_t x, uint8_t y, const unsigned char *text ) {
+void drawBcdRightAligned( uint8_t x, const uint8_t y, const uint8_t w, const BCD *value ) {
+    uint8_t i = sizeof(BCD) - w;
+    x += w - 1;
+    for ( i = 0; i < w; i++ ){
+        unsigned char c = ((unsigned char *) value)[i>>1];
+        if( i & 0x01 )
+            c >>= 4;
+        else
+            c &= 0x0F;
+        uint8_t tile = TILE_ZERO + c;
+        set_win_tile_xy( x--, y, tile );
+    }
+}
+
+void drawText( uint8_t x, const uint8_t y, drawTarget target, const unsigned char *text ) {
     for (; *text != '\0'; text++){
         unsigned char c = *text;
         uint8_t tile = TILE_EMPTY;
@@ -49,6 +48,9 @@ void drawText( uint8_t x, uint8_t y, const unsigned char *text ) {
         else if( 'A' <= c && c <= 'Z')
             tile = TILE_A + (c-'A');
 
-        setTile( x++, y, tile );
+        if( target == DrawBkg )
+            set_bkg_tile_xy( x++, y, tile );
+        else
+            set_win_tile_xy( x++, y, tile );
     }
 }

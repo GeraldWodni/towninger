@@ -8,7 +8,7 @@ EMULATOR_RUN = mgba-qt
 
 
 # Source files for your project (you can add more .c files here)
-SRCS = main.c graphics.c
+SRCS = main.c graphics.c fast_bcd.c
 
 # Default target
 all: build
