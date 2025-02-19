@@ -62,7 +62,10 @@ void main(void) {
 
     uint8_t bkg_x = SCROLL_X;
     uint8_t bkg_y = SCROLL_Y;
-    BCD bcd_bkg_x; uint2bcd( 1234, &bcd_bkg_x );
+    //BCD bcd_bkg_x; uint2bcd( SCROLL_X, &bcd_bkg_x );
+    //BCD bcd_bkg_y; uint2bcd( SCROLL_X, &bcd_bkg_y );
+    BCD bcd_bkg_x; uint2bcd( SCROLL_X+90, &bcd_bkg_x );
+    //BCD bcd_bkg_y; uint2bcd( 98, &bcd_bkg_y );
     BCD bcd_bkg_y; uint2bcd( SCROLL_X, &bcd_bkg_y );
     //bcd_bkg_x = 0x01020304;
 
@@ -150,13 +153,13 @@ void main(void) {
                 case J_LEFT:
                     if( bkg_x > 0 ) {
                         bkg_x--;
-                        bcd_decr_2d( bcd_bkg_x );
+                        bcd_decr_4d( &bcd_bkg_x );
                     }
                 break;
                 case J_RIGHT:
                     if( bkg_x < SCROLL_W ) {
                         bkg_x++;
-                        bcd_incr_2d( bcd_bkg_x );
+                        bcd_incr_4d( &bcd_bkg_x );
                     }
                 break;
                 case J_UP:
