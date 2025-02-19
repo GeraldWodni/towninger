@@ -145,31 +145,28 @@ void main(void) {
             lock_button = 0;
 
         if( !lock_button ) {            
-            switch( buttons ) {
-                case J_LEFT:
-                    if( bkg_x > 0 ) {
-                        bkg_x--;
-                        bcd_decr_2d( &bcd_bkg_x );
-                    }
-                break;
-                case J_RIGHT:
-                    if( bkg_x < SCROLL_W ) {
-                        bkg_x++;
-                        bcd_incr_2d( &bcd_bkg_x );
-                    }
-                break;
-                case J_UP:
-                    if( bkg_y > 0 ) {
-                        bkg_y--;
-                        bcd_decr_4d( &bcd_bkg_y );
-                    }
-                break;
-                case J_DOWN:
-                    if( bkg_y < SCROLL_H ) {
-                        bkg_y++;
-                        bcd_incr_4d( &bcd_bkg_y );
-                    }
-                break;
+            if( buttons & J_LEFT ) {
+                if( bkg_x > 0 ) {
+                    bkg_x--;
+                    bcd_decr_2d( &bcd_bkg_x );
+                }
+            }
+            else if( buttons & J_RIGHT ) {
+                if( bkg_x < SCROLL_W ) {
+                    bkg_x++;
+                    bcd_incr_2d( &bcd_bkg_x );
+                }
+            }
+            if( buttons & J_UP ) {
+                if( bkg_y > 0 ) {
+                    bkg_y--;
+                    bcd_decr_4d( &bcd_bkg_y );
+                }
+            } else if( buttons & J_DOWN ) {
+                if( bkg_y < SCROLL_H ) {
+                    bkg_y++;
+                    bcd_incr_4d( &bcd_bkg_y );
+                }
             }
             if( buttons == J_SELECT )
                 break;
