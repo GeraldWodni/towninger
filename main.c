@@ -62,12 +62,8 @@ void main(void) {
 
     uint8_t bkg_x = SCROLL_X;
     uint8_t bkg_y = SCROLL_Y;
-    //BCD bcd_bkg_x; uint2bcd( SCROLL_X, &bcd_bkg_x );
-    //BCD bcd_bkg_y; uint2bcd( SCROLL_X, &bcd_bkg_y );
-    BCD bcd_bkg_x; uint2bcd( SCROLL_X+90, &bcd_bkg_x );
-    //BCD bcd_bkg_y; uint2bcd( 98, &bcd_bkg_y );
-    BCD bcd_bkg_y; uint2bcd( SCROLL_X, &bcd_bkg_y );
-    //bcd_bkg_x = 0x01020304;
+    BCD bcd_bkg_x; uint2bcd( SCROLL_X, &bcd_bkg_x );
+    BCD bcd_bkg_y; uint2bcd( SCROLL_Y, &bcd_bkg_y );
 
     uint8_t player_x = 3;
     uint8_t player_y = 3;
@@ -95,8 +91,8 @@ void main(void) {
     set_win_data(0, NUMBER_OF_TILES, Tiles);
     fill_win( TILE_PLAYER );
 
-    drawText(0, 0, DrawWin, "BX:XXXX BY:XXXX" );
-    drawBcdRightAligned( 3, 0, 4, &bcd_bkg_x );
+    /* window text           01234567891123456789*/
+    drawText(0, 0, DrawWin, "B XX YYY RDY WEN U R" );
 
     USE_COLOR_RAM;
     fill_win( PAL_TEXT );
@@ -153,22 +149,26 @@ void main(void) {
                 case J_LEFT:
                     if( bkg_x > 0 ) {
                         bkg_x--;
-                        bcd_decr_4d( &bcd_bkg_x );
+                        bcd_decr_2d( &bcd_bkg_x );
                     }
                 break;
                 case J_RIGHT:
                     if( bkg_x < SCROLL_W ) {
                         bkg_x++;
-                        bcd_incr_4d( &bcd_bkg_x );
+                        bcd_incr_2d( &bcd_bkg_x );
                     }
                 break;
                 case J_UP:
-                    if( bkg_y > 0 )
+                    if( bkg_y > 0 ) {
                         bkg_y--;
+                        bcd_decr_4d( &bcd_bkg_y );
+                    }
                 break;
                 case J_DOWN:
-                    if( bkg_y < SCROLL_H )
+                    if( bkg_y < SCROLL_H ) {
                         bkg_y++;
+                        bcd_incr_4d( &bcd_bkg_y );
+                    }
                 break;
             }
             if( buttons == J_SELECT )
@@ -179,9 +179,8 @@ void main(void) {
         animations();
         move_bkg(bkg_x, bkg_y);
 
-        uint2bcd( bkg_x, &bcd_bkg_y );
-        drawBcdRightAligned(  3, 0, 4, &bcd_bkg_x );
-        drawBcdRightAligned( 11, 0, 4, &bcd_bkg_y );
+        drawBcdRightAligned( 2, 0, 2, &bcd_bkg_x );
+        drawBcdRightAligned( 5, 0, 3, &bcd_bkg_y );
 	}
 
 	DISPLAY_OFF;
